@@ -17,13 +17,21 @@ get '/' do
   JSON.pretty_generate ({
     name: 'GVaaS: Graphviz as a Service',
     repository: 'https://github.com/ryanbrainard/gvaas',
-    resources: {
+    resources: [
+      {
+        url: '/',
+        method: 'GET',
+        accept: ['application/json'],
+        errors: []
+      },
+      {
         url: '/dot',
         method: 'POST',
-        content_type: 'text/vnd.graphviz',
+        content_type: [gv_type],
         accept: supported_transforms.keys,
         errors: [406,415,422]
-    }
+      }
+    ]
   })
 end
 
