@@ -4,7 +4,13 @@ POST a Graphviz DOT and transform it.
 
 ## Usage
 
-`POST` the contents of a [Graphviz](http://www.graphviz.org/) document to `/dot` with the `Accept` header set to the the desired output media type. `GET /` to see supported media types.
+`POST` the contents of a [Graphviz](http://www.graphviz.org/) document to `/dot` with the
+`Content-Type` set to `text/vnd.graphviz` and the `Accept` header set to the the desired output media type.
+[`GET /`](http://gvaas.herokuapp.com/) to see supported media types. Potential errors include:
+
+ - [`406`](http://httpstatus.es/406): requested media type is not supported.
+ - [`415`](http://httpstatus.es/415): request is not of type `text/vnd.graphviz`.
+ - [`422`](http://httpstatus.es/422): request is not of type `text/vnd.graphviz`.
 
 ## Example
 

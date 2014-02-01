@@ -21,7 +21,8 @@ get '/' do
         url: '/dot',
         method: 'POST',
         content_type: 'text/vnd.graphviz',
-        accept: supported_transforms.keys
+        accept: supported_transforms.keys,
+        errors: [406,415,422]
     }
   })
 end
@@ -31,12 +32,23 @@ post '/dot' do
 
   accept = request.accept ? request.accept.first : gv_type
   transform = supported_transforms.detect{|t,_| t == accept}
-  error(415) unless transform
-  content_type transform[0]
+  error(406) unless transform
   cmd = transform[1]
 
-  out, log, status = Open3.capture3(cmd, stdin_data: request.body.string)
-  STDERR.puts log
-  error(500) unless status.exitstatus.zero?
+  out, err, status = Open3.capture3(cmd, stdin_data: request.body.string)
+  STDERR.puts "#{status} #{err}"
+
+  unless status.exitstatus.zero? && err.to_s.empty?
+    content_type :json
+    msg = JSON.pretty_generate ({
+        command: cmd,
+        exitstatus: status.exitstatus,
+        out: out,
+        err: err
+    })
+    error(422, msg)
+  end
+
+  content_type transform[0]
   out
 end
