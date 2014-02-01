@@ -63,3 +63,10 @@ Connection: keep-alive
 </g>
 </svg>
 ```
+
+## Deployment
+
+```
+$ heroku create gvaas -b https://github.com/ddollar/heroku-buildpack-multi.git
+$ git push heroku master
+```
