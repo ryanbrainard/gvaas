@@ -4,7 +4,7 @@ POST a Graphviz DOT and transform it.
 
 ## Usage
 
-`POST` the contents of a [Graphviz](http://www.graphviz.org/) document to `/dot` with the `Accept` header set to the the desired output media type. See `/` for a list of media types.
+`POST` the contents of a [Graphviz](http://www.graphviz.org/) document to `/dot` with the `Accept` header set to the the desired output media type. `GET /` to see supported media types.
 
 ## Example
 
