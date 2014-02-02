@@ -8,13 +8,19 @@ POST a Graphviz DOT and transform it.
 `Content-Type` set to `text/vnd.graphviz` and the `Accept` header set to the the desired output media type.
 [`GET /`](http://gvaas.herokuapp.com/) to see supported media types. Potential errors include:
 
- - [`406`](http://httpstatus.es/406): requested media type is not supported.
- - [`415`](http://httpstatus.es/415): request is not of type `text/vnd.graphviz`.
- - [`422`](http://httpstatus.es/422): request is not of type `text/vnd.graphviz`.
+ - [`406`](http://httpstatus.es/406): media type in `Accept` header is not supported.
+ - [`415`](http://httpstatus.es/415): media type in `Content-Type` header is not supported.
+ - [`422`](http://httpstatus.es/422): request could not be processed. Error details returned in a JSON object.
+
+Note, if using `curl` to upload files, be sure to use the `--data-binary` option to preserve new line characters.
 
 ## Example
 
-Converting a DOT to SVG:
+### Converting a DOT to SVG:
+
+    $ curl http://gvaas.herokuapp.com/dot -H 'Content-Type: text/vnd.graphviz' -H 'Accept: image/svg+xml' --data-binary @hello.dot
+
+#### Request
 
 ```
 POST /dot HTTP/1.1
@@ -25,6 +31,8 @@ Content-Length: 29
 
 digraph g { hello -> world; }
 ```
+
+#### Response
 
 ```
 HTTP/1.1 200 OK
@@ -62,6 +70,15 @@ Connection: keep-alive
 </g>
 </g>
 </svg>
+```
+
+## Development
+
+```
+$ git clone https://github.com/ryanbrainard/gvaas.git
+$ cd gvaas
+$ bundle install
+$ foreman start
 ```
 
 ## Deployment
