@@ -1,10 +1,10 @@
 # GVaaS: Graphviz as a Service
 
-POST a Graphviz DOT and transform it.
+Running [Graphviz](http://www.graphviz.org/) in the cloud so you don't have to.
 
 ## Usage
 
-`POST` the contents of a [Graphviz](http://www.graphviz.org/) document to `/dot` with the
+`POST` the contents of a Graphviz document to `/dot` with the
 `Content-Type` set to `text/vnd.graphviz` and the `Accept` header set to the the desired output media type.
 [`GET /`](http://gvaas.herokuapp.com/) to see supported media types. Potential errors include:
 
