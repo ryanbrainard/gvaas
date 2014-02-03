@@ -36,7 +36,7 @@ get '/' do
 end
 
 post '/dot' do
-  error(415) unless request.media_type == gv_type
+  error(415) unless (request.media_type.nil? || request.media_type == gv_type)
 
   accept = request.accept ? request.accept.first : gv_type
   transform = supported_transforms.detect{|t,_| t == accept}
