@@ -6,12 +6,13 @@ gv_type = 'text/vnd.graphviz'
 
 supported_transforms = {
     '*/*'                    => '',
-    gv_type                  => '',
-    #'image/png'             => '-Tpng',  // TODO
-    #'image/jpg'             => '-Tpng',  // TODO
-    #'image/gif'             => '-Tgif',  // TODO
+    gv_type                  => '-Tdot',
+    #'image/png'             => '-Tpng',  // TODO: heroku-buildpack-graphviz doesn't support these image types
+    #'image/jpg'             => '-Tpng',  // TODO: heroku-buildpack-graphviz doesn't support these image types
+    #'image/gif'             => '-Tgif',  // TODO: heroku-buildpack-graphviz doesn't support these image types
+    #'application/pdf'       => '-Tpdf',  // TODO: heroku-buildpack-graphviz doesn't support these image types
     'image/svg+xml'          => '-Tsvg',
-    'application/postscript' => '-Tps2'
+    'application/postscript' => '-Teps'
 }
 
 get '/' do
