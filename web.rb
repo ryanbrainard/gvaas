@@ -5,11 +5,13 @@ require 'json'
 gv_type = 'text/vnd.graphviz'
 
 supported_transforms = {
-    '*/*'           => '',
-    gv_type         => '',
-    #'image/png'    => '-Tpng',
-    #'image/gif'    => '-Tgif',
-    'image/svg+xml' => '-Tsvg'
+    '*/*'                    => '',
+    gv_type                  => '',
+    #'image/png'             => '-Tpng',  // TODO
+    #'image/jpg'             => '-Tpng',  // TODO
+    #'image/gif'             => '-Tgif',  // TODO
+    'image/svg+xml'          => '-Tsvg',
+    'application/postscript' => '-Tps2'
 }
 
 get '/' do
