@@ -6,6 +6,8 @@ Running [Graphviz](http://www.graphviz.org/) in the cloud so you don't have to.
 
 `POST` the contents of a Graphviz document to `/dot` with the
 `Content-Type` set to `text/vnd.graphviz` and the `Accept` header set to the the desired output media type.
+Alternatively, `GET /dot` with the document in the `gz` param and output media type in `accept` param
+for clients that do not support `POST`.
 [`GET /`](http://gvaas.herokuapp.com/) to see supported media types. Potential errors include:
 
  - [`406`](http://httpstatus.es/406): media type in `Accept` header is not supported.
