@@ -15,21 +15,14 @@ def supported_transforms
     #'image/gif'             => '-Tgif',  // TODO: heroku-buildpack-graphviz doesn't support these image types
     #'application/pdf'       => '-Tpdf',  // TODO: heroku-buildpack-graphviz doesn't support these image types
     'image/svg+xml'          => '-Tsvg',
+    'application/xml'        => '-Tsvg',
     'application/postscript' => '-Teps'
  }
 end
 
 def dot(input, output_type=nil)
-  accept = if output_type then
-             if output_type.is_a?(Array)
-               output_type.first
-             else
-               output_type
-             end
-           else
-             gv_type
-           end
-  transform = supported_transforms.detect{|t,_| t == accept}
+  accept = output_type ? output_type : [gv_type]
+  transform = supported_transforms.detect{|t,_| accept.include?(t)}
   error(406) unless transform
   cmd = "dot #{transform[1]}"
 
