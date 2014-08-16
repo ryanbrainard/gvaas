@@ -1,0 +1,16 @@
+{
+    "name": "GVaaS",
+    "description": "Graphviz as a Service",
+    "website": "https://github.com/ryanbrainard/gvaas",
+    "repository": "https://github.com/ryanbrainard/gvaas",
+    "logo": "http://upload.wikimedia.org/wikipedia/en/4/48/GraphvizLogo.png",
+    "keywords": [
+        "graphviz",
+        "graphing",
+        "visualization",
+        "cloud"
+    ]
+    "env": {
+        "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi.git"
+    }
+}
