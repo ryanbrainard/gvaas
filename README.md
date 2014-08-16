@@ -2,6 +2,8 @@
 
 Running [Graphviz](http://www.graphviz.org/) in the cloud so you don't have to.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Usage
 
 `POST` the contents of a Graphviz document to `/dot` with the
@@ -89,3 +91,7 @@ $ foreman start
 $ heroku create gvaas -b https://github.com/ddollar/heroku-buildpack-multi.git
 $ git push heroku master
 ```
+
+...or just:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
